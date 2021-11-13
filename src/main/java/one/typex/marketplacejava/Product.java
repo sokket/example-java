@@ -3,6 +3,8 @@ package one.typex.marketplacejava;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
@@ -10,10 +12,11 @@ import javax.persistence.Id;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String title;
     String description;
-    String imgUrl;
     Long price;
+    Long categoryId;
 
 }
