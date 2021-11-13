@@ -1,6 +1,6 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
-    import { createEventDispatcher } from 'svelte';
+    import {createEventDispatcher} from 'svelte';
 
     const dispatch = createEventDispatcher();
 
@@ -43,11 +43,16 @@
     </div>
     <div class="item-count">
         <div class="item-count-container">
-            <button class="item-count-minus" on:click={() => product.count--}>
+            <button class="item-count-minus" on:click={() => {
+                if (product.count > 0) product.count--
+            }}>
                 <Icon icon="akar-icons:minus"/>
             </button>
             <input type="text" class="item-count-value" bind:value={product.count}/>
-            <button class="item-count-plus" on:click={() => product.count++}>
+            <button class="item-count-plus" on:click={() => {
+            if (product.count < 1000)
+                product.count++
+            }}>
                 <Icon icon="akar-icons:plus"/>
             </button>
         </div>
@@ -83,6 +88,7 @@
         justify-content: center;
         border-radius: 6px;
     }
+
     .item-image img {
         height: 100%;
     }
@@ -145,7 +151,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 32px;
+        width: 42px;
         border: none;
         text-align: center;
     }
